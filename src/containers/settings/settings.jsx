@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { composeTheme } from '@css-modules-theme/core';
+import { DateTime } from 'luxon';
 
 import TextInput from '../../components/text-input';
 import RadioButton from '../../components/radio-button';
@@ -32,7 +33,7 @@ class Settings extends Component {
   };
 
   handleDateTimeFormat = value => {
-    this.props.updateApplicationSettings('timeFormat', value ? 'TIME_SIMPLE' : 'TIME_24_SIMPLE');
+    this.props.updateApplicationSettings('timeFormat', value ? DateTime.TIME_SIMPLE : DateTime.TIME_24_SIMPLE);
   };
 
   handleSendByKeysOptionChange = value => {
@@ -67,8 +68,8 @@ class Settings extends Component {
           <div className={styles.controlWrapper}>
             <div className={styles.controlLabel}>Clock display</div>
             <div className={styles.radiosWrapper}>
-              <RadioButton onChange={this.handleDateTimeFormat} value={1} checked={timeFormat === 'TIME_SIMPLE'} label='12 Hours' name='timeFormat' />
-              <RadioButton onChange={this.handleDateTimeFormat} value={0} checked={timeFormat === 'TIME_24_SIMPLE'} label='24 hours' name='timeFormat' />
+              <RadioButton onChange={this.handleDateTimeFormat} value={1} checked={timeFormat === DateTime.TIME_SIMPLE || timeFormat.hour12 === undefined} label='12 Hours' name='timeFormat' />
+              <RadioButton onChange={this.handleDateTimeFormat} value={0} checked={timeFormat === DateTime.TIME_24_SIMPLE || timeFormat.hour12 === false} label='24 hours' name='timeFormat' />
             </div>
           </div>
 

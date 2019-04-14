@@ -1,9 +1,11 @@
+import { DateTime } from 'luxon';
+
 const initialState = {
   isLoading: false,
   isError: false,
   username: 'Default',
   theme: 'light',
-  timeFormat: 'TIME_SIMPLE',
+  timeFormat: DateTime.TIME_SIMPLE,
   sendByKeys: false
 };
 

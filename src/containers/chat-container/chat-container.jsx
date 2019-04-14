@@ -28,7 +28,6 @@ class ChatContainer extends Component {
 
   render() {
     const {
-      messages,
       theme
     } = this.props;
     const styles = composeTheme([themes.light, themes[theme]]);
@@ -36,7 +35,7 @@ class ChatContainer extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Messages messages={messages} />
+          <Messages />
         </div>
         <div className={styles.writeMessageWrapper}>
           <MessageInput />
@@ -50,7 +49,6 @@ ChatContainer.propTypes = {};
 
 const mapStateToProps = state => {
   return {
-    messages: state.chat.messages,
     theme: state.settings.theme
   }
 };

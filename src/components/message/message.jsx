@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Linkify from 'react-linkify';
-import ReactPlayer from 'react-player';
 import Img from 'react-image';
+import { DateTime } from 'luxon';
+import VideoPlayer from '../video-player';
 
 import { getYoutubeDataFromMessage } from '../../helpers/youtube-link-parser';
 
@@ -19,26 +20,27 @@ const getVideoLink = message => {
   return null;
 };
 
-const Message = ({ message }) => {
+const Message = ({ message, timeFormat, theme }) => {
   const videoLink = getVideoLink(message.message);
 
   return (
-    <li className={classnames({
+    <li className={classnames(styles.messageWrapper, {
       [styles.received]: message.type === 'MESSAGE_RECEIVED',
       [styles.sent]: message.type === 'MESSAGE_SENT'
     })}>
-      <span>{message.username}</span>
-      <span>{message.dateTime.toString()}</span>
-      <span>
-        <Linkify>
-          <Img
-            src={message.message} unloader={<div>{message.message}</div>}/>
-          {videoLink && (
-            <ReactPlayer url={videoLink} />
-          )}
-        </Linkify>
-      </span>
-
+      <div className={styles.messageHeader}>
+        <span>{message.username}, </span>
+        <span>{message.dateTime.toLocaleString(timeFormat)}</span>
+      </div>
+      <div className={styles.messageBody}>
+          <Linkify>
+            <Img
+              src={message.message} unloader={<div className={styles.textContent}>{message.message}</div>}/>
+            {videoLink && (
+              <VideoPlayer url={videoLink} />
+            )}
+          </Linkify>
+        </div>
     </li>
   );
 };
