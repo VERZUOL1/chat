@@ -29,7 +29,7 @@ const Message = ({ message, timeFormat, theme }) => {
       [styles.sent]: message.type === 'MESSAGE_SENT'
     })}>
       <div className={styles.messageHeader}>
-        <span>{message.username}, </span>
+        {message.type === 'MESSAGE_RECEIVED' && <span>{message.username}, </span>}
         <span>{message.dateTime.toLocaleString(timeFormat)}</span>
       </div>
       <div className={styles.messageBody}>
