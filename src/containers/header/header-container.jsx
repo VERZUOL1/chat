@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { composeTheme } from '@css-modules-theme/core';
+import { FormattedMessage } from 'react-intl';
 import getUnreadMessagesCount from '../../helpers/selectors';
 
 import stylesLight from './header.module.scss';
@@ -32,13 +33,13 @@ class HeaderContainer extends Component {
             [styles.attention]: showAttention
           })}>
             <NavLink exact to='/'>
-              Chat
+              <FormattedMessage id="tab.chat" defaultMessage="Chat" />
               {showAttention && <span className={styles.sup}>{messagesCount}</span>}
             </NavLink>
           </li>
           <li className={styles.tabControl}>
             <NavLink to='/settings'>
-              Settings
+              <FormattedMessage id="tab.settings" defaultMessage="Settings" />
             </NavLink>
           </li>
         </ul>

@@ -18,7 +18,8 @@ const themes = {
 const TextInput = ({
   value,
   onChange,
-  theme
+  theme,
+  placeholder
 }) => {
   const styles = composeTheme([themes.light, themes[theme]]);
   return (
@@ -26,7 +27,7 @@ const TextInput = ({
       <input
         className={styles.input}
         type='text'
-        placeholder='Enter message'
+        placeholder={placeholder}
         onChange={e => onChange(e.target.value)}
         value={value} />
     </div>
@@ -34,7 +35,8 @@ const TextInput = ({
 };
 
 TextInput.defaultProps = {
-  theme: 'light'
+  theme: 'light',
+  placeholder: 'Default'
 };
 
 TextInput.propTypes = {

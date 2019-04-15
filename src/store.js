@@ -4,16 +4,23 @@ import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 import rootReducer from './reducers';
 import socketMiddleware from './middlewares/socket';
+import intlMiddleware from './middlewares/intl';
 import { loadState, saveState } from './helpers/local-storage';
+import enLocale from './locales/en';
 
 
 export const history = createBrowserHistory();
+
+const initialState = {
+  intl: enLocale
+};
 
 const persistedState = loadState();
 const enhancers = [];
 const middleware = [
   thunk,
   socketMiddleware,
+  intlMiddleware,
   routerMiddleware(history),
 ];
 
@@ -32,13 +39,14 @@ const composedEnhancers = compose(
 
 const store = createStore(
   rootReducer(history),
-  persistedState,
+  persistedState || initialState,
   composedEnhancers
 );
 
 store.subscribe(() => {
   saveState({
-    settings: store.getState().settings
+    settings: store.getState().settings,
+    intl: store.getState().intl
   });
 });
 

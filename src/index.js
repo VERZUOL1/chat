@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-intl-redux';
 import store, { history } from './store';
 import App from './containers/app';
 import * as serviceWorker from './serviceWorker';
 
+import { addLocaleData } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import ru from 'react-intl/locale-data/ru';
+
 import './assets/styles/base.scss';
 import './assets/styles/pure-min.css';
 import './assets/styles/grids-responsive-min.css';
+
+addLocaleData([...en, ...ru]);
 
 const target = document.querySelector('#root');
 

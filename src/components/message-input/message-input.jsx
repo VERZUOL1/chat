@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import TextInput from '../text-input';
 import Button from '../button';
 import { sendMessage } from '../../actions/chat';
@@ -50,8 +51,16 @@ class MessageInput extends Component {
     const { theme } = this.props;
     return (
       <>
-        <TextInput onChange={this.handleChange} value={value} theme={theme} />
-        <Button onClick={this.handleSubmit} label='SEND' style={{ width: '80px', marginLeft: '20px' }} theme={theme} />
+        <TextInput
+          placeholder='Enter a message'
+          onChange={this.handleChange}
+          value={value}
+          theme={theme} />
+        <Button
+          onClick={this.handleSubmit}
+          label={<FormattedMessage id="button.send" defaultMessage="Send" />}
+          style={{ width: '80px', marginLeft: '20px' }}
+          theme={theme} />
       </>
     );
   }

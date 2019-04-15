@@ -27,7 +27,7 @@ const RadioButton = ({
       <input
         checked={checked}
         onChange={() => onChange(value)}
-        id={label}
+        id={`${name}_${label}`}
         name={name}
         type='radio'
         value={value} />

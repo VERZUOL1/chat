@@ -6,7 +6,12 @@ const initialState = {
   username: 'Default',
   theme: 'light',
   timeFormat: DateTime.TIME_SIMPLE,
-  sendByKeys: false
+  sendByKeys: false,
+  locales: [
+    { value: 'en', label: 'English' },
+    { value: 'ru', label: 'Русский' }
+  ],
+  selectedLocale: { value: 'en', label: 'English' }
 };
 
 /**
