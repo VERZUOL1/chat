@@ -185,7 +185,7 @@ Settings.propTypes = {
   theme: PropTypes.string,
   timeFormat: PropTypes.object,
   sendByKeys: PropTypes.bool,
-  selectedLocale: PropTypes.string,
+  selectedLocale: PropTypes.object,
   locales: PropTypes.array
 };
 

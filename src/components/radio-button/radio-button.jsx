@@ -70,7 +70,10 @@ RadioButton.propTypes = {
   /**
    * label
    */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   /**
    * Define radios group name
    */

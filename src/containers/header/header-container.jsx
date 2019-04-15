@@ -27,8 +27,8 @@ const themes = {
  */
 class HeaderContainer extends Component {
   render() {
-    const { messagesCount, theme } = this.props;
-    const showAttention = messagesCount > 0;
+    const { messagesCount, theme, pathname } = this.props;
+    const showAttention = messagesCount > 0 && pathname !== '/';
 
     const styles = composeTheme([themes.light, themes[theme]]);
 
@@ -73,7 +73,8 @@ HeaderContainer.propTypes = {
 const mapStateToProps = state => {
   return {
     messagesCount: getUnreadMessagesCount(state),
-    theme: state.settings.theme
+    theme: state.settings.theme,
+    pathname: state.router.location.pathname
   }
 };
 
