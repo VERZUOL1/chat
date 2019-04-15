@@ -52,6 +52,7 @@ class App extends Component {
     return (
       <div className={styles.container}>
         <div className='pure-u-xl-1-3 pure-u-md-1-2 pure-u-sm-1 pure-u-1'>
+          <div className={styles.title}>Chat with me!</div>
           <Header />
           <Switch>
             <Route exact path='/' component={Chat} />

@@ -1,0 +1,15 @@
+@import "../../assets/styles/colors";
+
+.messageBody {
+  background: $cinnabar;
+}
+
+.received {
+  color: $periwinkle-gray;
+  align-items: flex-start;
+}
+
+.sent {
+  color: $periwinkle-gray;
+  align-items: flex-end;
+}

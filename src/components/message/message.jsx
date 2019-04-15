@@ -14,7 +14,18 @@ import { getVideoLink } from '../../helpers/youtube-link-parser';
 import { MESSAGE_RECEIVED, MESSAGE_SENT } from '../../constants/common.js'
 
 // Styles
-import styles from './message.module.scss';
+import stylesLight from './message.module.scss';
+import stylesDark from './message-dark.module.scss';
+import { composeTheme } from '@css-modules-theme/core';
+
+const themes = {
+  light: {
+    theme: stylesLight
+  },
+  dark: {
+    theme: stylesDark
+  }
+};
 
 /**
  * Renders chat message
@@ -24,8 +35,9 @@ import styles from './message.module.scss';
  * @returns {*}
  * @constructor
  */
-const Message = ({ message, timeFormat }) => {
+const Message = ({ message, timeFormat, theme }) => {
   const videoLink = getVideoLink(message.message);
+  const styles = composeTheme([themes.light, themes[theme]]);
 
   return (
     <li className={classnames(styles.messageWrapper, {
@@ -39,7 +51,7 @@ const Message = ({ message, timeFormat }) => {
       <div className={styles.messageBody}>
           <Linkify>
             <Img
-              src={message.message} unloader={<div className={styles.textContent}>{message.message}</div>}/>
+              src={message.message} unloader={<span className={styles.textContent}>{message.message}</span>}/>
             {videoLink && (
               <VideoPlayer url={videoLink} />
             )}
@@ -57,7 +69,11 @@ Message.propTypes = {
   /**
    * Selected time format
    */
-  timeFormat: PropTypes.object
+  timeFormat: PropTypes.object,
+  /**
+   * Selected theme
+   */
+  theme: PropTypes.string
 };
 
 export default Message;

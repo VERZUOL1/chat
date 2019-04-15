@@ -1,12 +1,10 @@
 @import "../../assets/styles/colors";
 
 .container {
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 10rem);
 
   display: flex;
   flex-direction: column;
-  background: $white;
-
   margin: 0 1rem;
 }
 
@@ -18,8 +16,11 @@
   border-style: solid;
   border-color: $black;
   border-radius: 1rem;
+  box-shadow: 2px 2px 6px $grey;
 
   overflow-y: scroll;
+
+  background-color: rgba($white, 0.5);
 }
 
 .writeMessageWrapper {
@@ -30,6 +31,10 @@
 
   align-items: center;
   justify-content: space-between;
+}
 
-
+@media screen and (max-width: 600px) {
+  .container {
+    height: calc(100vh - 6rem);
+  }
 }

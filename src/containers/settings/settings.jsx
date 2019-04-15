@@ -162,6 +162,7 @@ class Settings extends Component {
               <FormattedMessage id="label.selectLanguage" defaultMessage="Select language"/>
             </div>
             <DropdownSelect
+              theme={theme}
               value={selectedLocale}
               onChange={this.handleLanguageSelect}
               options={locales}

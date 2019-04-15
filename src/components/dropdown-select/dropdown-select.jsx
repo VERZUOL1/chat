@@ -12,13 +12,35 @@ const customStyles = {
     ...provided,
     border: '2px solid black',
     width: 200,
-  }),
-  singleValue: (provided, state) => {
-    const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
+  })
+};
 
-    return { ...provided, opacity, transition };
-  }
+const customStylesDark = {
+  menuList: provided => ({
+    ...provided,
+    backgroundColor: 'black',
+    border: '2px solid rgb(92, 18, 0)',
+    borderRadius: '0.4rem'
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? 'white' : 'grey',
+    backgroundColor: 'black',
+    padding: 10,
+  }),
+  control: provided => ({
+    ...provided,
+    color: 'white',
+    border: '2px solid rgb(92, 18, 0)',
+    boxShadow: '2px 2px 6px rgb(92, 18, 0)',
+    backgroundColor: 'rgba(black, 0.7)',
+    width: 200,
+  })
+};
+
+const themes = {
+  light: customStyles,
+  dark: customStylesDark
 };
 
 /**
@@ -29,18 +51,20 @@ const customStyles = {
  * @returns {*}
  * @constructor
  */
-const DropdownSelect = ({ value, onChange, options}) => {
+const DropdownSelect = ({ value, onChange, options, theme}) => {
   return (
     <Select
-      styles={customStyles}
+      styles={{ ...themes[theme]}}
       value={value}
       onChange={onChange}
       options={options}
-      theme={(theme) => ({
-        ...theme,
+      theme={(th) => ({
+        ...th,
         borderRadius: '0.4rem',
         colors: {
-          ...theme.colors
+          ...th.colors,
+          primary25: '#5C1200',
+          primary: '#ededed'
         },
       })}
     />

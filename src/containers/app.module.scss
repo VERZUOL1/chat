@@ -4,4 +4,19 @@
   margin: 0 auto;
 
   height: 100vh;
+
+  background: url('../assets/images/lightbg.jpeg') no-repeat;
+  background-size: cover;
+}
+
+.title {
+  font-size: 2em;
+
+  margin: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    display: none;
+  }
 }

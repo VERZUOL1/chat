@@ -1,5 +1,10 @@
 @import "../assets/styles/colors";
 
 .container {
-  background: $black;
+  background: url('../assets/images/darkbg.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.title {
+  color: $white;
 }

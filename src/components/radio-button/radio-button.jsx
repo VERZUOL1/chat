@@ -38,6 +38,7 @@ const RadioButton = ({
   return (
     <div className={styles.wrapper}>
       <input
+        className={styles.radio}
         checked={checked}
         onChange={() => onChange(value)}
         id={`${name}_${label}`}
