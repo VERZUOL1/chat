@@ -1,0 +1,43 @@
+@import "../../assets/styles/colors";
+
+.headerContainer {
+  border-color: $white;
+  background: $black;
+}
+
+.tabControl {
+  color: $white;
+  &:active {
+    color: $light-grey;
+    background: none;
+  }
+}
+
+.activeNavLink {
+  border-bottom: 2px solid $black;
+}
+
+.sup {
+  position: absolute;
+  font-size: 0.8rem;
+  right: -0.6rem;
+  top: 0;
+  color: $mid-carmine;
+}
+
+.attention {
+  animation-duration: 0.5s;
+  animation-name: flashing;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes flashing {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

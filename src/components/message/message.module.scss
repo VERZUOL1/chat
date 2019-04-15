@@ -1,0 +1,42 @@
+@import "../../assets/styles/colors";
+
+.messageWrapper {
+  max-width: 14rem;
+  list-style: none;
+  white-space: pre-wrap;
+
+  padding: 0.3rem 0;
+}
+
+.messageHeader {
+  white-space: nowrap;
+  font-size: 0.8rem;
+}
+
+.messageBody {
+  background: $blue;
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  img {
+    width: 100%;
+  }
+}
+
+.textContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
+
+.received {
+  color: $periwinkle-gray;
+}
+
+.sent {
+  color: $periwinkle-gray;
+  margin-left: auto;
+}

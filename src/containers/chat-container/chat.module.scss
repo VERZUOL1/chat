@@ -1,0 +1,35 @@
+@import "../../assets/styles/colors";
+
+.container {
+  height: calc(100vh - 6rem);
+
+  display: flex;
+  flex-direction: column;
+  background: $white;
+
+  margin: 0 1rem;
+}
+
+.wrapper {
+  height: 100%;
+  padding: 1rem;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: $black;
+  border-radius: 1rem;
+
+  overflow-y: scroll;
+}
+
+.writeMessageWrapper {
+  display: flex;
+  height: 4rem;
+  margin: 1rem 0;
+  overflow: hidden;
+
+  align-items: center;
+  justify-content: space-between;
+
+
+}

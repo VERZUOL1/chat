@@ -1,0 +1,44 @@
+@import "../../assets/styles/colors";
+
+.container {
+  height: calc(100vh - 6rem);
+
+  display: flex;
+  flex-direction: column;
+  background: white;
+
+  margin: 0 1rem;
+}
+
+.wrapper {
+  height: 100%;
+  padding: 1rem;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: $black;
+  border-radius: 1rem;
+}
+
+.controlWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.controlLabel {
+  margin: 0.6rem 0;
+}
+
+.radiosWrapper {
+  display: flex;
+}
+
+.resetButtonWrapper {
+  display: flex;
+  height: 4rem;
+  margin: 1rem 0;
+  border: 2px solid $black;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
