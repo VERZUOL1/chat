@@ -1,5 +1,5 @@
 import { updateIntl } from 'react-intl-redux';
-
+import { UPDATE_APPLICATION_SETTINGS } from '../constants/action-types';
 import en from '../locales/en';
 import ru from '../locales/ru';
 
@@ -14,11 +14,13 @@ const locales = {
 const intlMiddleware = ({ dispatch, getState }) => {
   return next => action => {
     switch (action.type) {
-      case 'UPDATE_APPLICATION_SETTINGS': {
+      case UPDATE_APPLICATION_SETTINGS: {
         if (action.property === 'selectedLocale') {
-
           const selected = action.value.value;
           const locale = locales[selected];
+          /**
+           * Reload selected locale data
+           */
           dispatch(updateIntl({
             ...locale
           }));

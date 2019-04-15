@@ -1,3 +1,5 @@
+@import "../../assets/styles/colors";
+
 .messageWrapper {
   max-width: 14rem;
   list-style: none;
@@ -12,7 +14,7 @@
 }
 
 .messageBody {
-  background: #129FEA;
+  background: $blue;
   border-radius: 0.3rem;
   padding: 0.2rem;
 
@@ -31,10 +33,10 @@
 }
 
 .received {
-  color: red;
+  color: $periwinkle-gray;
 }
 
 .sent {
-  color: blue;
+  color: $periwinkle-gray;
   margin-left: auto;
 }

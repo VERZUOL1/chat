@@ -5,8 +5,11 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { composeTheme } from '@css-modules-theme/core';
 import { FormattedMessage } from 'react-intl';
+
+// Helpers
 import getUnreadMessagesCount from '../../helpers/selectors';
 
+// Styles
 import stylesLight from './header.module.scss';
 import stylesDark from './header-dark.module.scss';
 
@@ -19,6 +22,9 @@ const themes = {
   }
 };
 
+/**
+ * Header component
+ */
 class HeaderContainer extends Component {
   render() {
     const { messagesCount, theme } = this.props;
@@ -48,8 +54,22 @@ class HeaderContainer extends Component {
   }
 }
 
-HeaderContainer.propTypes = {};
+HeaderContainer.propTypes = {
+  /**
+   * Number of unread messages
+   */
+  messagesCount: PropTypes.number,
+  /**
+   * Selected theme
+   */
+  theme: PropTypes.string
+};
 
+/**
+ * Map state to component props
+ * @param state
+ * @returns {{theme: *, messagesCount}}
+ */
 const mapStateToProps = state => {
   return {
     messagesCount: getUnreadMessagesCount(state),

@@ -3,33 +3,37 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Linkify from 'react-linkify';
 import Img from 'react-image';
-import { DateTime } from 'luxon';
+
+// Components
 import VideoPlayer from '../video-player';
 
-import { getYoutubeDataFromMessage } from '../../helpers/youtube-link-parser';
+// Helpers
+import { getVideoLink } from '../../helpers/youtube-link-parser';
 
+// Constants
+import { MESSAGE_RECEIVED, MESSAGE_SENT } from '../../constants/common.js'
+
+// Styles
 import styles from './message.module.scss';
 
-const getVideoLink = message => {
-  const data = getYoutubeDataFromMessage(message);
-
-  if (data && data.provider === 'youtube') {
-    return `http://www.youtube.com/watch?v=${data.id}`;
-  }
-
-  return null;
-};
-
-const Message = ({ message, timeFormat, theme }) => {
+/**
+ * Renders chat message
+ * @param message
+ * @param timeFormat
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
+const Message = ({ message, timeFormat }) => {
   const videoLink = getVideoLink(message.message);
 
   return (
     <li className={classnames(styles.messageWrapper, {
-      [styles.received]: message.type === 'MESSAGE_RECEIVED',
-      [styles.sent]: message.type === 'MESSAGE_SENT'
+      [styles.received]: message.type === MESSAGE_RECEIVED,
+      [styles.sent]: message.type === MESSAGE_SENT
     })}>
       <div className={styles.messageHeader}>
-        {message.type === 'MESSAGE_RECEIVED' && <span>{message.username}, </span>}
+        {message.type === MESSAGE_RECEIVED && <span>{message.username}, </span>}
         <span>{message.dateTime.toLocaleString(timeFormat)}</span>
       </div>
       <div className={styles.messageBody}>
@@ -46,7 +50,14 @@ const Message = ({ message, timeFormat, theme }) => {
 };
 
 Message.propTypes = {
-
+  /**
+   * Message object
+   */
+  message: PropTypes.object,
+  /**
+   * Selected time format
+   */
+  timeFormat: PropTypes.object
 };
 
 export default Message;

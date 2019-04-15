@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { composeTheme } from '@css-modules-theme/core';
 
+// Styles
 import stylesLight from './button.module.scss';
 import stylesDark from './button-dark.module.scss';
 
@@ -14,6 +15,15 @@ const themes = {
   }
 };
 
+/**
+ * Button component
+ * @param theme
+ * @param label
+ * @param onClick
+ * @param style
+ * @returns {*}
+ * @constructor
+ */
 const Button = ({
   theme,
   label,
@@ -35,9 +45,21 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  /**
+   * Optional styles
+   */
   style: PropTypes.object,
+  /**
+   * Selected theme
+   */
   theme: PropTypes.string,
+  /**
+   * On button click handler
+   */
   onClick: PropTypes.func.isRequired,
+  /**
+   * Button label
+   */
   label: PropTypes.node
 };
 

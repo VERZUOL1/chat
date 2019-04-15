@@ -1,9 +1,10 @@
+@import "../../assets/styles/colors";
+
 .wrapper {
-  //background: yellow;
 }
 
 .input {
-  border-color: white;
-  background-color: black;
-  color: white;
+  border-color: $white;
+  background-color: $black;
+  color: $white;
 }

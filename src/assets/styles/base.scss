@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "colors";
 @import "mixins";
 
@@ -11,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: VoltaModern, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.25;
@@ -36,7 +37,7 @@ button,
 input,
 select,
 textarea {
-  font-family: 'VoltaModern', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 button,

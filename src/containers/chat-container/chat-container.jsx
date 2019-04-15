@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { composeTheme } from '@css-modules-theme/core';
 
+// Components
 import Messages from '../../components/messages';
 import MessageInput from '../../components/message-input';
 
+// Actions
 import { updateMessagesStatus } from '../../actions/chat';
 
+// Styles
 import stylesLight from './chat.module.scss';
 import stylesDark from './chat-dark.module.scss';
 
@@ -20,12 +23,21 @@ const themes = {
   }
 };
 
-
+/**
+ * Chat page
+ */
 class ChatContainer extends Component {
+  /**
+   * Updates unread messages status on load
+   */
   componentDidMount() {
     this.props.updateMessagesStatus();
   }
 
+  /**
+   * Render component
+   * @returns {*}
+   */
   render() {
     const {
       theme
@@ -45,14 +57,28 @@ class ChatContainer extends Component {
   }
 }
 
-ChatContainer.propTypes = {};
+ChatContainer.propTypes = {
+  /**
+   * Selected theme
+   */
+  theme: PropTypes.string
+};
 
+/**
+ * Map state to component props
+ * @param state
+ * @returns {{theme: *}}
+ */
 const mapStateToProps = state => {
   return {
     theme: state.settings.theme
   }
 };
 
+/**
+ * Map actions to component props
+ * @type {{updateMessagesStatus: updateMessagesStatus}}
+ */
 const mapDispatchToProps = {
   updateMessagesStatus
 };

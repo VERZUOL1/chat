@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { composeTheme } from '@css-modules-theme/core';
 
+// Styles
 import stylesLight from './radio-button.module.scss';
 import stylesDark from './radio-button-dark.module.scss';
 
@@ -13,6 +15,17 @@ const themes = {
   }
 };
 
+/**
+ * Renders radio button
+ * @param checked
+ * @param onChange
+ * @param label
+ * @param name
+ * @param value
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
 const RadioButton = ({
   checked,
   onChange,
@@ -42,6 +55,29 @@ const RadioButton = ({
 
 RadioButton.defaultProps = {
   theme: 'light'
+};
+
+RadioButton.propTypes = {
+  /**
+   * Checked flag
+   */
+  checked: PropTypes.bool,
+  /**
+   * On change hander
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * label
+   */
+  label: PropTypes.string,
+  /**
+   * Define radios group name
+   */
+  name: PropTypes.string,
+  /**
+   * Value
+   */
+  value: PropTypes.number
 };
 
 export default RadioButton;

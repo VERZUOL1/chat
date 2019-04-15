@@ -1,3 +1,13 @@
+import {
+  MESSAGE_RECEIVED,
+  MESSAGE_SENT,
+  READ,
+  UNREAD
+} from '../constants/common';
+import {
+  UPDATE_MESSAGES_STATUS
+} from '../constants/action-types';
+
 const initialState = {
   isLoading: false,
   isError: false,
@@ -9,9 +19,9 @@ const initialState = {
  */
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'MESSAGE_RECEIVED': {
+    case MESSAGE_RECEIVED: {
       const newMessage = {
-        status: 'UNREAD',
+        status: UNREAD,
         ...action
       };
       return {
@@ -20,10 +30,10 @@ export default function (state = initialState, action) {
       }
     }
 
-    case 'MESSAGE_SENT': {
+    case MESSAGE_SENT: {
       const newMessage = {
         ...action,
-        status: 'READ'
+        status: READ
       };
       return {
         ...state,
@@ -31,10 +41,10 @@ export default function (state = initialState, action) {
       }
     }
 
-    case 'UPDATE_MESSAGES_STATUS': {
+    case UPDATE_MESSAGES_STATUS: {
       return {
         ...state,
-        messages: state.messages.map(item => ({ ...item, status: 'READ' }))
+        messages: state.messages.map(item => ({ ...item, status: READ }))
       }
     }
     default:

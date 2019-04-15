@@ -1,22 +1,20 @@
+@import "../../assets/styles/colors";
+
 .headerContainer {
-  border-color: white;
-  background: black;
+  border-color: $white;
+  background: $black;
 }
 
 .tabControl {
-  color: white;
+  color: $white;
   &:active {
-    color: lightgray;
+    color: $light-grey;
     background: none;
   }
 }
 
-.navLink {
-
-}
-
 .activeNavLink {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $black;
 }
 
 .sup {
@@ -24,7 +22,7 @@
   font-size: 0.8rem;
   right: -0.6rem;
   top: 0;
-  color: red;
+  color: $mid-carmine;
 }
 
 .attention {

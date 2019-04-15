@@ -5,14 +5,16 @@ import { composeTheme } from '@css-modules-theme/core';
 import { DateTime } from 'luxon';
 import { FormattedMessage } from 'react-intl';
 
+// Components
 import TextInput from '../../components/text-input';
 import RadioButton from '../../components/radio-button';
 import Button from '../../components/button';
 import DropdownSelect from '../../components/dropdown-select';
 
+// Actions
 import { updateApplicationSettings, resetAppSettings } from '../../actions/settings';
 
-
+// Styles
 import stylesLight from './settings.module.scss';
 import stylesDark from './settings-dark.module.scss';
 
@@ -25,31 +27,61 @@ const themes = {
   }
 };
 
+/**
+ * Settings page
+ */
 class Settings extends Component {
+  /**
+   * Handle username change
+   * @param value
+   */
   handleUsernameChange = value => {
     this.props.updateApplicationSettings('username', value);
   };
 
+  /**
+   * Handle interface color select
+   * @param value
+   */
   handleInterfaceColorChange = value => {
     this.props.updateApplicationSettings('theme', value ? 'light' : 'dark');
   };
 
+  /**
+   * Handle time format select
+   * @param value
+   */
   handleDateTimeFormat = value => {
     this.props.updateApplicationSettings('timeFormat', value ? DateTime.TIME_SIMPLE : DateTime.TIME_24_SIMPLE);
   };
 
+  /**
+   * Handle send option select
+   * @param value
+   */
   handleSendByKeysOptionChange = value => {
     this.props.updateApplicationSettings('sendByKeys', !!value);
   };
 
+  /**
+   * Handle reset to default press
+   */
   handleResetToDefaults = () => {
     this.props.resetAppSettings();
   };
 
+  /**
+   * Handles language select
+   * @param selectedOption
+   */
   handleLanguageSelect = selectedOption => {
     this.props.updateApplicationSettings('selectedLocale', selectedOption);
   };
 
+  /**
+   * Render component
+   * @returns {*}
+   */
   render() {
     const { username, theme, timeFormat, sendByKeys, selectedLocale, locales } = this.props;
 
@@ -67,7 +99,6 @@ class Settings extends Component {
               onChange={this.handleUsernameChange}
               theme={theme} />
           </div>
-
           <div className={styles.controlWrapper}>
             <div className={styles.controlLabel}>
               <FormattedMessage id="label.interfaceColor" defaultMessage="Interface color" />
@@ -88,7 +119,6 @@ class Settings extends Component {
                 name='theme' />
             </div>
           </div>
-
           <div className={styles.controlWrapper}>
             <div className={styles.controlLabel}>
               <FormattedMessage id="label.clockDisplay" defaultMessage="Clock display" />
@@ -108,7 +138,6 @@ class Settings extends Component {
                 name='timeFormat' />
             </div>
           </div>
-
           <div className={styles.controlWrapper}>
             <div className={styles.controlLabel}>
               <FormattedMessage id="label.sendByKeys" defaultMessage="Send messages on CTRL + ENTER"/>
@@ -128,7 +157,6 @@ class Settings extends Component {
                 name='sendByKeys' />
             </div>
           </div>
-
           <div className={styles.controlWrapper}>
             <div className={styles.controlLabel}>
               <FormattedMessage id="label.selectLanguage" defaultMessage="Select language"/>
@@ -151,19 +179,53 @@ class Settings extends Component {
   }
 }
 
-Settings.propTypes = {};
+Settings.propTypes = {
+  username: PropTypes.string,
+  theme: PropTypes.string,
+  timeFormat: PropTypes.object,
+  sendByKeys: PropTypes.bool,
+  selectedLocale: PropTypes.string,
+  locales: PropTypes.array
+};
 
+/**
+ * Map state to component props
+ * @param state
+ * @returns {{locales: *, timeFormat: *, sendByKeys: (*|boolean), theme: *, selectedLocale: (*|initialState.selectedLocale|{label, value}), username: (*|string|T|string)}}
+ */
 const mapStateToProps = state => {
   return {
+    /**
+     * User name
+     */
     username: state.settings.username,
+    /**
+     * Selected theme
+     */
     theme: state.settings.theme,
+    /**
+     * Selected time format
+     */
     timeFormat: state.settings.timeFormat,
+    /**
+     * Options to send messages
+     */
     sendByKeys: state.settings.sendByKeys,
+    /**
+     * Available locales
+     */
     locales: state.settings.locales,
+    /**
+     * Selected locale
+     */
     selectedLocale: state.settings.selectedLocale
   };
 };
 
+/**
+ * Map actions to component props
+ * @type {{updateApplicationSettings: updateApplicationSettings, resetAppSettings: resetAppSettings}}
+ */
 const mapDispatchToProps = {
   updateApplicationSettings,
   resetAppSettings,

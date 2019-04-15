@@ -8,13 +8,11 @@ import intlMiddleware from './middlewares/intl';
 import { loadState, saveState } from './helpers/local-storage';
 import enLocale from './locales/en';
 
-
 export const history = createBrowserHistory();
 
 const initialState = {
   intl: enLocale
 };
-
 const persistedState = loadState();
 const enhancers = [];
 const middleware = [

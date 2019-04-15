@@ -1,3 +1,7 @@
+/**
+ * Deserialize stored data from local storage
+ * @returns {*}
+ */
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
@@ -13,6 +17,10 @@ export const loadState = () => {
   }
 };
 
+/**
+ * Serialize state to localstorage
+ * @param state
+ */
 export const saveState = state => {
   try {
     const serializedState = JSON.stringify(state);

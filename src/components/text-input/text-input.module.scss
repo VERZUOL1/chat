@@ -1,3 +1,5 @@
+@import "../../assets/styles/colors";
+
 .wrapper {
   display: flex;
   align-items: baseline;
@@ -13,11 +15,11 @@
   border-style: solid;
   border-radius: 0.5rem;
 
-  border-color: black;
+  border-color: $black;
 
   padding-left: 1rem;
 
-  color: black;
+  color: $black;
   outline: none;
 
   &:focus {

@@ -1,3 +1,7 @@
+import {
+  UPDATE_APPLICATION_SETTINGS,
+  RESET_APPLICATION_SETTINGS
+} from '../constants/action-types';
 import { DateTime } from 'luxon';
 
 const initialState = {
@@ -19,13 +23,13 @@ const initialState = {
  */
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'UPDATE_APPLICATION_SETTINGS': {
+    case UPDATE_APPLICATION_SETTINGS: {
       return {
         ...state,
         [action.property]: action.value
       }
     }
-    case 'RESET_APPLICATION_SETTINGS': {
+    case RESET_APPLICATION_SETTINGS: {
       return {
         ...initialState
       }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { composeTheme } from '@css-modules-theme/core';
 
+// Styles
 import stylesLight from './text-input.module.scss';
 import stylesDark from './text-input-dark.module.scss';
 
@@ -14,7 +15,15 @@ const themes = {
   }
 };
 
-
+/**
+ * Renders text input component
+ * @param value
+ * @param onChange
+ * @param theme
+ * @param placeholder
+ * @returns {*}
+ * @constructor
+ */
 const TextInput = ({
   value,
   onChange,
@@ -40,7 +49,22 @@ TextInput.defaultProps = {
 };
 
 TextInput.propTypes = {
-
+  /**
+   * Value
+   */
+  value: PropTypes.string,
+  /**
+   * On change handler
+   */
+  onChange: PropTypes.func.isRequired,
+  /*
+   * Selected theme
+   */
+  theme: PropTypes.string,
+  /**
+   * Optional placeholder
+   */
+  placeholder: PropTypes.string
 };
 
 export default TextInput;

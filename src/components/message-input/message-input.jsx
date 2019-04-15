@@ -6,19 +6,32 @@ import TextInput from '../text-input';
 import Button from '../button';
 import { sendMessage } from '../../actions/chat';
 
+/**
+ * Message input with submit button
+ */
 class MessageInput extends Component {
   state = {
     value: ''
   };
 
+  /**
+   * Add listener to handle submit by enter key
+   */
   componentDidMount() {
     document.addEventListener('keypress', this.handleSubmitByKeys)
   }
 
+  /**
+   * Remove listener on unmount
+   */
   componentWillUnmount() {
     document.removeEventListener('keypress', this.handleSubmitByKeys);
   }
 
+  /**
+   * Submit message by enter or ctrl+enter depending on app settings
+   * @param event
+   */
   handleSubmitByKeys = event => {
     if ((this.props.sendByKeys && event.ctrlKey && event.key === 'Enter')
       || (!this.props.sendByKeys && event.key === 'Enter')) {
@@ -26,12 +39,19 @@ class MessageInput extends Component {
     }
   };
 
+  /**
+   * Handle input change
+   * @param value
+   */
   handleChange = value => {
     this.setState({
       value
     })
   };
 
+  /**
+   * Handle submit action
+   */
   handleSubmit = () => {
     if (this.state.value.trim() === '') {
       this.setState({
@@ -46,6 +66,10 @@ class MessageInput extends Component {
     });
   };
 
+  /**
+   * Render compinent
+   * @returns {*}
+   */
   render() {
     const { value } = this.state;
     const { theme } = this.props;
@@ -67,8 +91,21 @@ class MessageInput extends Component {
 }
 
 MessageInput.propTypes = {
+  /**
+   * Selected theme
+   */
+  theme: PropTypes.string,
+  /**
+   * Define how to handle enter key action
+   */
+  sendByKeys: PropTypes.bool
 };
 
+/**
+ * Map state to component props
+ * @param state
+ * @returns {{sendByKeys: (*|boolean), theme: *}}
+ */
 const mapStateToProps = state => {
   return {
     theme: state.settings.theme,
@@ -76,6 +113,10 @@ const mapStateToProps = state => {
   }
 };
 
+/**
+ * Map actions to component props
+ * @type {{sendMessage: sendMessage}}
+ */
 const mapDispatchToProps = {
   sendMessage
 };

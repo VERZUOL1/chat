@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 
 const customStyles = {
@@ -20,6 +21,14 @@ const customStyles = {
   }
 };
 
+/**
+ * Renders customized dropdown select
+ * @param value
+ * @param onChange
+ * @param options
+ * @returns {*}
+ * @constructor
+ */
 const DropdownSelect = ({ value, onChange, options}) => {
   return (
     <Select
@@ -36,6 +45,21 @@ const DropdownSelect = ({ value, onChange, options}) => {
       })}
     />
   );
+};
+
+DropdownSelect.propTypes = {
+  /**
+   * Selected dropdown value
+   */
+  value: PropTypes.object,
+  /**
+   * On options change handler
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * Available options
+   */
+  options: PropTypes.array.isRequired
 };
 
 export default DropdownSelect;

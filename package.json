@@ -34,7 +34,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "server": "npm run start --prefix ./server",
+    "start:app": "npm i && npm i --prefix ./server && concurrently 'npm run server' 'npm run start'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,5 +45,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "react-test-renderer": "^16.8.6"
+  }
 }

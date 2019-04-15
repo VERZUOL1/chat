@@ -1,16 +1,18 @@
+@import "../../assets/styles/colors";
+
 .container {
-  background: black;
+  background: $black;
 }
 
 .wrapper {
-  border-color: white;
+  border-color: $white;
 }
 
 .controlWrapper {
-  color: white;
+  color: $white;
 }
 
 
 .resetButtonWrapper {
-  border-color: white;
+  border-color: $white;
 }
