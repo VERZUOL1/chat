@@ -1,8 +1,10 @@
 const express = require('express');
 const socketIo = require('socket.io');
+const path = require('path');
 
 const server = express()
-  .use((req, res) => res.sendFile('../build/index.html') )
+  .use(express.static(path.join(__dirname, '..', 'build')))
+  .get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'build/index.html')) )
   .listen(3005, () => console.log(`Listening on 3005`));
 const io = socketIo(server);
 
