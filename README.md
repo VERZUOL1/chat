@@ -3,6 +3,7 @@
 Latest application version is running and available on<br> https://socket-io-cht.herokuapp.com/
 
 This is Socket.io based chat application. It contains 2 pages: Chat and Settings.
+There is a connection status indicator on top of the page.
 Chat page displays sent messages on the right and received messages on the left.<br>
 Each message contains Author name, time and text (image, link, video);
 Message input component allow to add emoji to text and send message by pressing Enter or Ctrl+Enter depending on Settings.
@@ -14,6 +15,7 @@ If user is on Settings page and there are new messages coming, Chat tab will bli
 * Display images in chat by pasting a link
 * Display Youtube video in chat by pasting a link
 * Unread messages count
+* Connection status
 ##### Setting
 * Ability to change username
 * Light and dark themes supported

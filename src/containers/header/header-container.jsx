@@ -27,7 +27,7 @@ const themes = {
  */
 class HeaderContainer extends Component {
   render() {
-    const { messagesCount, theme, pathname } = this.props;
+    const { messagesCount, theme, pathname, connected } = this.props;
     const showAttention = messagesCount > 0 && pathname !== '/';
 
     const styles = composeTheme([themes.light, themes[theme]]);
@@ -49,7 +49,9 @@ class HeaderContainer extends Component {
             </NavLink>
           </li>
         </ul>
-        <div>{this.props.connected ? 'Yes' : 'No'}</div>
+        <div className={styles.indicator} title={connected ? 'Connected' : 'Disconnected'}>
+          <i className={connected ? 'fas fa-circle green' : 'far fa-circle red'} />
+        </div>
       </div>
     );
   }
