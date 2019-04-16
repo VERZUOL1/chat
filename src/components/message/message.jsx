@@ -61,6 +61,10 @@ const Message = ({ message, timeFormat, theme }) => {
   );
 };
 
+Message.defaultProps = {
+  theme: 'light'
+};
+
 Message.propTypes = {
   /**
    * Message object

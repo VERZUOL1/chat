@@ -1,5 +1,4 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Picker } from 'emoji-mart';
 
@@ -7,15 +6,25 @@ import 'emoji-mart/css/emoji-mart.css';
 import './custom-emoji.scss';
 import styles from './emoji-selector.module.scss';
 
+/**
+ * Emoji selector
+ */
 class EmojiSelector extends React.Component {
   state = {
     isOpen: false
   };
 
+  /**
+   * Handles open/close state
+   */
   handleToggleClick = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
+  /**
+   * Handles icon select
+   * @param e
+   */
   handleSelect = e => {
     if (e.unified.length <= 5){
       const emojiPic = String.fromCodePoint(`0x${e.unified}`);
@@ -29,13 +38,17 @@ class EmojiSelector extends React.Component {
     }
   };
 
+  /**
+   * Render component
+   * @returns {*}
+   */
   render() {
     const { isOpen } = this.state;
 
     return (
       <div className={styles.toggle} onClick={this.handleToggleClick}>
         <i className='far fa-smile-wink' />
-        {isOpen && <div className={styles.picker}>
+        {isOpen && <div id='em-picker' className={styles.picker}>
           <Picker
             onSelect={this.handleSelect}
             perLine={6}
@@ -49,7 +62,10 @@ class EmojiSelector extends React.Component {
 }
 
 EmojiSelector.propTypes = {
-
+  /**
+   * Callback to be called on icon select
+   */
+  onSelect: PropTypes.func.isRequired
 };
 
 export default EmojiSelector;
