@@ -32,11 +32,12 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node ./server/index.js",
+    "start:dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "server": "npm run start --prefix ./server",
-    "start:app": "npm i && npm i --prefix ./server && concurrently 'npm run server' 'npm run start'"
+    "server": "npm run start:dev --prefix ./server",
+    "start:dev:app": "npm i && npm i --prefix ./server && concurrently 'npm run server' 'npm run start:dev'"
   },
   "eslintConfig": {
     "extends": "react-app"

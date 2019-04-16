@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "my first socket.io app",
   "scripts": {
-    "start": "nodemon index.js"
+    "start:dev": "nodemon dev.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.15.2",
+    "node-static": "^0.7.11",
     "nodemon": "^1.18.11",
     "socket.io": "^2.2.0"
   }
