@@ -15,6 +15,8 @@ if (process.env.NODE_ENV === 'production') {
     .get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'build/index.html')) )
 }
 
+app.listen(port, () => console.log(`Chat application is listening on port: ${port}`));
+
 // Initialize socketIo module
 const io = socketIo(app);
 
@@ -36,5 +38,3 @@ io.on('connection', socket => {
     socket.broadcast.emit('message', message);
   });
 });
-
-app.listen(port, () => console.log(`Chat application is listening on port: ${port}`));
