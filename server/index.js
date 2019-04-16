@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
 
@@ -14,11 +15,12 @@ if (process.env.NODE_ENV === 'production') {
     .use(express.static(path.join(__dirname, '..', 'build')))
     .get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'build/index.html')) )
 }
+const server = http.createServer(app);
 
-app.listen(port, () => console.log(`Chat application is listening on port: ${port}`));
+server.listen(port, () => console.log(`Chat application is listening on port: ${port}`));
 
 // Initialize socketIo module
-const io = socketIo(app);
+const io = socketIo(server);
 
 // Define socketIo events
 const allClients = [];
