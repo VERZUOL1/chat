@@ -1,1 +1,1 @@
-export const SERVER_API_ADDRESS = 'http://localhost:3005';
+export const SERVER_API_ADDRESS = 'localhost:3005';

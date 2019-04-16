@@ -14,4 +14,8 @@
   border: 2px solid $black;
   border-radius: 0.5rem;
   box-shadow: 2px 2px 6px $grey;
+
+  &:focus {
+    outline: none;
+  }
 }

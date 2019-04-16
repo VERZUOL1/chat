@@ -83,7 +83,7 @@ class MessageInput extends Component {
           theme={theme} />
         <Button
           onClick={this.handleSubmit}
-          label={<FormattedMessage id="button.send" defaultMessage="Send" />}
+          label={<i className="far fa-paper-plane" />}
           style={{ width: '80px', marginLeft: '20px' }}
           theme={theme} />
       </>
