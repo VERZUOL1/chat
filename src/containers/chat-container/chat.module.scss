@@ -1,16 +1,15 @@
 @import "../../assets/styles/colors";
 
 .container {
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 10rem);
 
   display: flex;
   flex-direction: column;
-  background: $white;
-
   margin: 0 1rem;
 }
 
 .wrapper {
+  position: relative;
   height: 100%;
   padding: 1rem;
 
@@ -18,18 +17,42 @@
   border-style: solid;
   border-color: $black;
   border-radius: 1rem;
+  box-shadow: 2px 2px 6px $grey;
 
   overflow-y: scroll;
+
+  background-color: rgba($white, 0.5);
 }
 
 .writeMessageWrapper {
   display: flex;
   height: 4rem;
   margin: 1rem 0;
-  overflow: hidden;
 
   align-items: center;
   justify-content: space-between;
+}
 
+@media screen and (max-width: 600px) {
+  .container {
+    height: calc(100vh - 6rem);
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 450px) {
+  .container {
+    height: calc(100vh - 3rem);
+    margin: 0 0.3rem;
+  }
+
+  .wrapper {
+    height: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .writeMessageWrapper {
+    height: 4rem;
+    margin: 0.4rem 0;
+  }
 
 }

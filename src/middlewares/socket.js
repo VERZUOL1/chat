@@ -7,7 +7,9 @@ import {
 } from '../constants/action-types';
 import {
   MESSAGE_RECEIVED,
-  MESSAGE_SENT
+  MESSAGE_SENT,
+  UNREAD,
+  READ
 } from '../constants/common';
 import { SERVER_API_ADDRESS } from '../constants/end-points';
 
@@ -27,9 +29,11 @@ const socketMiddleware = ({ dispatch, getState }) => {
       case SOCKET_CONNECT: {
         socket = io(SERVER_API_ADDRESS);
         socket.on('message', data => {
+          const pathname = getState().router.location.pathname;
           dispatch({
             type: MESSAGE_RECEIVED,
             ...data,
+            status: pathname !== '/' ? UNREAD : READ,
             dateTime: new DateTime(data.dateTime)
           })
         });

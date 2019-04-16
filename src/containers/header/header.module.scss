@@ -8,6 +8,8 @@
   border-style: solid;
   border-color: $black;
   border-radius: 1rem;
+  box-shadow: 2px 2px 6px $grey;
+  background-color: rgba($white, 0.5);
 
   display: flex;
   align-items: center;
@@ -46,7 +48,7 @@
 .sup {
   position: absolute;
   font-size: 0.8rem;
-  right: -0.6rem;
+  right: -0.8rem;
   top: 0;
   color: $mid-carmine;
 }
@@ -65,5 +67,12 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 450px) {
+  .headerContainer {
+    margin: 0.3rem;
+    height: 2rem;
   }
 }

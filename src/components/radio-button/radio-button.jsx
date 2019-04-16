@@ -38,6 +38,7 @@ const RadioButton = ({
   return (
     <div className={styles.wrapper}>
       <input
+        className={styles.radio}
         checked={checked}
         onChange={() => onChange(value)}
         id={`${name}_${label}`}
@@ -69,7 +70,10 @@ RadioButton.propTypes = {
   /**
    * label
    */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   /**
    * Define radios group name
    */

@@ -1,12 +1,13 @@
 @import "../../assets/styles/colors";
 
 .headerContainer {
-  border-color: $white;
-  background: $black;
+  border-color: rgb(92, 18, 0);
+  box-shadow: 2px 2px 6px rgb(92, 18, 0);
+  background-color: rgba($black, 0.7);
 }
 
 .tabControl {
-  color: $white;
+  color: $cinnabar;
   &:active {
     color: $light-grey;
     background: none;

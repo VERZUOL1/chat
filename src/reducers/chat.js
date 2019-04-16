@@ -21,7 +21,6 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case MESSAGE_RECEIVED: {
       const newMessage = {
-        status: UNREAD,
         ...action
       };
       return {

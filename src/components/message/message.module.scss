@@ -1,22 +1,30 @@
 @import "../../assets/styles/colors";
 
 .messageWrapper {
-  max-width: 14rem;
+  //max-width: 60%;
   list-style: none;
   white-space: pre-wrap;
 
   padding: 0.3rem 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .messageHeader {
+  display: inline-block;
   white-space: nowrap;
   font-size: 0.8rem;
+  padding-bottom: 0.2rem;
 }
 
 .messageBody {
-  background: $blue;
+  max-width: 70%;
+  display: inline-block;
+  background: #debca3;
   border-radius: 0.3rem;
-  padding: 0.2rem;
+  padding: 0.8rem;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,9 +42,10 @@
 
 .received {
   color: $periwinkle-gray;
+  align-items: flex-start;
 }
 
 .sent {
   color: $periwinkle-gray;
-  margin-left: auto;
+  align-items: flex-end;
 }

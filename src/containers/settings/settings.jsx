@@ -162,6 +162,7 @@ class Settings extends Component {
               <FormattedMessage id="label.selectLanguage" defaultMessage="Select language"/>
             </div>
             <DropdownSelect
+              theme={theme}
               value={selectedLocale}
               onChange={this.handleLanguageSelect}
               options={locales}
@@ -184,7 +185,7 @@ Settings.propTypes = {
   theme: PropTypes.string,
   timeFormat: PropTypes.object,
   sendByKeys: PropTypes.bool,
-  selectedLocale: PropTypes.string,
+  selectedLocale: PropTypes.object,
   locales: PropTypes.array
 };
 
