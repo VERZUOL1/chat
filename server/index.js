@@ -2,10 +2,12 @@ const express = require('express');
 const socketIo = require('socket.io');
 const path = require('path');
 
+const port = process.env.PORT || 3005;
+
 const server = express()
   .use(express.static(path.join(__dirname, '..', 'build')))
   .get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'build/index.html')) )
-  .listen(3005, () => console.log(`Listening on 3005`));
+  .listen(port, () => console.log(`Listening on ${port}`));
 const io = socketIo(server);
 
 const allClients = [];
