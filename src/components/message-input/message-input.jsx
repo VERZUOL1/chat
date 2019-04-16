@@ -76,6 +76,7 @@ class MessageInput extends Component {
     return (
       <>
         <TextInput
+          showEmojiSelector
           placeholder='Enter a message'
           onChange={this.handleChange}
           value={value}

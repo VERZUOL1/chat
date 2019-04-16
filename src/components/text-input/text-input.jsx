@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { composeTheme } from '@css-modules-theme/core';
+import EmojiSelector from '../emoji-selector';
 
 // Styles
 import stylesLight from './text-input.module.scss';
@@ -21,6 +22,7 @@ const themes = {
  * @param onChange
  * @param theme
  * @param placeholder
+ * @param showEmojiSelector
  * @returns {*}
  * @constructor
  */
@@ -28,7 +30,8 @@ const TextInput = ({
   value,
   onChange,
   theme,
-  placeholder
+  placeholder,
+  showEmojiSelector
 }) => {
   const styles = composeTheme([themes.light, themes[theme]]);
   return (
@@ -39,13 +42,15 @@ const TextInput = ({
         placeholder={placeholder}
         onChange={e => onChange(e.target.value)}
         value={value} />
+      {showEmojiSelector && <EmojiSelector onSelect={icon => onChange(`${value}${icon}`)}/>}
     </div>
   );
 };
 
 TextInput.defaultProps = {
   theme: 'light',
-  placeholder: 'Default'
+  placeholder: 'Default',
+  showEmojiSelector: false
 };
 
 TextInput.propTypes = {
@@ -64,7 +69,8 @@ TextInput.propTypes = {
   /**
    * Optional placeholder
    */
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  showEmojiSelector: PropTypes.bool
 };
 
 export default TextInput;

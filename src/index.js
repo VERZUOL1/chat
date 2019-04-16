@@ -14,6 +14,7 @@ import * as serviceWorker from './serviceWorker';
 import './assets/styles/base.scss';
 import './assets/styles/pure-min.css';
 import './assets/styles/grids-responsive-min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 addLocaleData([...en, ...ru]);
 
