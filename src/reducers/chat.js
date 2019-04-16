@@ -5,13 +5,16 @@ import {
   UNREAD
 } from '../constants/common';
 import {
+  CONNECTED,
+  DISCONNECTED,
   UPDATE_MESSAGES_STATUS
 } from '../constants/action-types';
 
 const initialState = {
   isLoading: false,
   isError: false,
-  messages: []
+  messages: [],
+  connected: false
 };
 
 /**
@@ -19,6 +22,18 @@ const initialState = {
  */
 export default function (state = initialState, action) {
   switch (action.type) {
+    case CONNECTED: {
+      return {
+        ...state,
+        connected: true
+      }
+    }
+    case DISCONNECTED: {
+      return {
+        ...state,
+        connected: false
+      }
+    }
     case MESSAGE_RECEIVED: {
       const newMessage = {
         ...action

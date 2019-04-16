@@ -3,7 +3,9 @@ import { DateTime } from 'luxon';
 import {
   SOCKET_CONNECT,
   SOCKET_DISCONNECT,
-  SEND_MESSAGE
+  SEND_MESSAGE,
+  CONNECTED,
+  DISCONNECTED
 } from '../constants/action-types';
 import {
   MESSAGE_RECEIVED,
@@ -13,6 +15,7 @@ import {
 } from '../constants/common';
 import { SERVER_API_ADDRESS } from '../constants/end-points';
 
+let socket = null;
 /**
  * Socket.io middleware
  * It connect/disconnect from chat
@@ -20,7 +23,6 @@ import { SERVER_API_ADDRESS } from '../constants/end-points';
  *
  */
 const socketMiddleware = ({ dispatch, getState }) => {
-  let socket = null;
   return next => action => {
     const username = getState().settings.username;
     const dateTime = DateTime.local();
@@ -28,6 +30,20 @@ const socketMiddleware = ({ dispatch, getState }) => {
     switch (action.type) {
       case SOCKET_CONNECT: {
         socket = io(SERVER_API_ADDRESS);
+        socket.on('connect', () => {
+          if (socket && socket.connected) {
+            dispatch({
+              type: CONNECTED
+            })
+          }
+        });
+        socket.on('disconnect', () => {
+          if (socket && socket.disconnected && getState().chat.connected) {
+            dispatch({
+              type: DISCONNECTED
+            });
+          }
+        });
         socket.on('message', data => {
           const pathname = getState().router.location.pathname;
           dispatch({

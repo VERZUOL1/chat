@@ -49,6 +49,7 @@ class HeaderContainer extends Component {
             </NavLink>
           </li>
         </ul>
+        <div>{this.props.connected ? 'Yes' : 'No'}</div>
       </div>
     );
   }
@@ -74,7 +75,8 @@ const mapStateToProps = state => {
   return {
     messagesCount: getUnreadMessagesCount(state),
     theme: state.settings.theme,
-    pathname: state.router.location.pathname
+    pathname: state.router.location.pathname,
+    connected: state.chat.connected
   }
 };
 
