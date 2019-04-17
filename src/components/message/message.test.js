@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from './index';
+import { Message } from './message';
 import { shallow } from 'enzyme';
 import { MESSAGE_RECEIVED } from '../../constants/common';
 

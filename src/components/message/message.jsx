@@ -80,4 +80,5 @@ Message.propTypes = {
   theme: PropTypes.string
 };
 
-export default Message;
+export { Message };
+export default React.memo(Message);
