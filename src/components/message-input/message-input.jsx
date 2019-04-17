@@ -122,4 +122,5 @@ const mapDispatchToProps = {
   sendMessage
 };
 
+export { MessageInput };
 export default connect(mapStateToProps, mapDispatchToProps)(MessageInput);

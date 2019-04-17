@@ -39,14 +39,18 @@ class Messages extends React.Component {
     const { messages, theme, timeFormat } = this.props;
     return (
       <ul className={styles.messagesWrapper}>
-        {messages.map((item, ind) => (
-          <Message key={ind} message={item} timeFormat={timeFormat} theme={theme} />
+        {messages.map(item => (
+          <Message key={item.id} message={item} timeFormat={timeFormat} theme={theme} />
         ))}
         <div ref={this.messagesEndRef} style={{ height: '1rem' }}/>
       </ul>
     );
   }
 }
+
+Messages.defaultProps = {
+  messages: []
+};
 
 Messages.propTypes = {
   /**
@@ -76,4 +80,5 @@ const mapStateToProps = state => {
   }
 };
 
+export { Messages };
 export default connect(mapStateToProps)(Messages);

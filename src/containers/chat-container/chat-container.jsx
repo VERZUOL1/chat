@@ -13,6 +13,7 @@ import { updateMessagesStatus } from '../../actions/chat';
 // Styles
 import stylesLight from './chat.module.scss';
 import stylesDark from './chat-dark.module.scss';
+import ErrorBoundary from '../../components/error-boundary/error-boundary';
 
 const themes = {
   light: {
@@ -47,15 +48,23 @@ class ChatContainer extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Messages />
+          <ErrorBoundary>
+            <Messages />
+          </ErrorBoundary>
         </div>
         <div className={styles.writeMessageWrapper}>
-          <MessageInput />
+          <ErrorBoundary>
+            <MessageInput />
+          </ErrorBoundary>
         </div>
       </div>
     );
   }
 }
+
+ChatContainer.defaultProps = {
+  theme: 'light'
+};
 
 ChatContainer.propTypes = {
   /**
@@ -83,4 +92,5 @@ const mapDispatchToProps = {
   updateMessagesStatus
 };
 
+export { ChatContainer };
 export default connect(mapStateToProps, mapDispatchToProps)(ChatContainer);

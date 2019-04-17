@@ -1,4 +1,5 @@
 import io from 'socket.io-client';
+import shortId from 'shortid';
 import { DateTime } from 'luxon';
 import {
   SOCKET_CONNECT,
@@ -49,6 +50,7 @@ const socketMiddleware = ({ dispatch, getState }) => {
           dispatch({
             type: MESSAGE_RECEIVED,
             ...data,
+            id: shortId.generate(),
             status: pathname !== '/' ? UNREAD : READ,
             dateTime: new DateTime(data.dateTime)
           })
@@ -63,6 +65,7 @@ const socketMiddleware = ({ dispatch, getState }) => {
       }
       case SEND_MESSAGE: {
         const newMessage = {
+          id: shortId.generate(),
           dateTime,
           username,
           message: action.payload
