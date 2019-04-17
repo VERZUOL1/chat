@@ -1,8 +1,7 @@
 import {
   MESSAGE_RECEIVED,
   MESSAGE_SENT,
-  READ,
-  UNREAD
+  READ
 } from '../constants/common';
 import {
   CONNECTED,
